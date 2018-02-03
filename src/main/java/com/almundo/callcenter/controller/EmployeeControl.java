@@ -4,8 +4,10 @@ import com.almundo.callcenter.controller.employee.Roles;
 import com.almundo.callcenter.controller.call.Call;
 import com.almundo.callcenter.controller.call.Status;
 import com.almundo.callcenter.controller.employee.Employee;
+import com.almundo.callcenter.controller.util.Util;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -43,7 +45,7 @@ public class EmployeeControl implements IEmployeeControl, Observer {
         Call call = ((Call) arg);
         if (call.getStateCall().equals(Status.ANSWERED)) {
             updateStatusEmployee(call.getAgent(), Boolean.TRUE);
-            Logger.getLogger(EmployeeControl.class.getName()).log(Level.INFO, "/*****El agente {0} ha contestado la llamada y se encuentra en estado ocupado " + call.getStateCall(), call.getAgent().getName());
+            Logger.getLogger(EmployeeControl.class.getName()).log(Level.INFO, call.getStartDate() + "  /*****El agente {0} ha contestado la llamada y se encuentra en estado ocupado " + call.getStateCall(), call.getAgent().getName());
         }
         if (call.getStateCall().equals(Status.FINISHED)) {
             updateStatusEmployee(call.getAgent(), Boolean.FALSE);
